@@ -3,7 +3,7 @@ import {RFValue} from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({theme}) => theme.colors.white};
+    background-color: ${({theme}) => theme.colors.gray_secondary};
     align-items: center;
 `;
 
