@@ -2,13 +2,13 @@ import styled from "styled-components/native";
 import {RFValue} from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
-    width: 90%;
-    height: 126px;
+    width: 100%;
+    height: ${RFValue(126)}px;
     padding: ${RFValue(16)}px;
     background-color: ${({theme}) => theme.colors.white};
-    margin: 16px 16px;
     flex-direction: row;
     justify-content:space-between ;
+    margin-bottom: ${RFValue(16)}px;
 
 `;
 
