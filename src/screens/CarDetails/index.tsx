@@ -1,7 +1,8 @@
 import React from "react";
-import { useTheme } from "styled-components";
 import { Backbutton } from "../../components/Backbutton";
+import { ImageSlider } from "../../components/ImageSlider";
 import { Container, Header } from "./styles";
+
 
 
 export function CarDetails(){
@@ -9,6 +10,7 @@ export function CarDetails(){
         <Container >
             <Header>
                 <Backbutton onPress={() => {}}/>
+                <ImageSlider />
             </Header>
         </Container>
     )
