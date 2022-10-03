@@ -21,8 +21,10 @@ import { Container
        , Amount
        , About
        , Accessories
+       , Footer
     } from "./styles";
 import { Accessory } from "../../components/Accessory";
+import { Button } from "../../components/Button";
 
 
 
@@ -62,6 +64,9 @@ export function CarDetails(){
                     É um belíssimo carro para quem gosta de acelerar.
                 </About>
             </Content>
+            <Footer>
+                <Button name="Alugar" />
+            </Footer>
         </Container>
     )
 }
