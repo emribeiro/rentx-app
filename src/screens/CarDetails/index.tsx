@@ -1,6 +1,14 @@
 import React from "react";
 import { Backbutton } from "../../components/Backbutton";
 import { ImageSlider } from "../../components/ImageSlider";
+
+import accelerationSvg from '../../assets/acceleration.svg';
+import speedSvg from '../../assets/speed.svg';
+import forceSvg from '../../assets/force.svg';
+import gasolineSvg from '../../assets/gasoline.svg';
+import exchangeSvg from '../../assets/exchange.svg';
+import peopleSvg from '../../assets/people.svg';
+
 import { Container
        , Header 
        , Content
@@ -12,7 +20,10 @@ import { Container
        , Period
        , Amount
        , About
+       , Accessories
     } from "./styles";
+import { Accessory } from "../../components/Accessory";
+
 
 
 
@@ -37,6 +48,14 @@ export function CarDetails(){
                     </Rent>
                 </Details>
 
+                <Accessories>
+                    <Accessory title="28 x 28" icon={speedSvg} />
+                    <Accessory title="3.2s" icon={accelerationSvg} />
+                    <Accessory title="800 HP" icon={forceSvg} />
+                    <Accessory title="Gasolina" icon={gasolineSvg} />
+                    <Accessory title="Auto" icon={exchangeSvg} />
+                    <Accessory title="2 Pessoas" icon={peopleSvg} />
+                </Accessories>
                 <About>
                     Este é automóvel desportivo. 
                     Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. 

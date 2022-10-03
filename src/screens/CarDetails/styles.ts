@@ -14,10 +14,12 @@ export const Header = styled.View``;
 
 export const Content = styled.ScrollView.attrs({
     contentContainerStyle: {
-        padding: 24,
+        padding: 8,
         alignItems: 'center'
     }
-})``;
+})`
+    width: 100%;
+`;
 
 export const Details = styled.View`
     flex-direction: row;
@@ -63,4 +65,16 @@ export const About = styled.Text`
     color: ${({theme}) => theme.colors.gray_text_details};
     font-size: ${RFValue(15)}px;
     margin-top: 24px;
+    line-height: ${RFValue(25)}px;
+`;
+
+export const Accessories = styled.View`
+    width: 100%;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
 `;
