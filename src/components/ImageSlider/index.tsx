@@ -23,7 +23,7 @@ export function ImageSlider({images} : Props){
 
             <ImageContent>
                 <CarImage 
-                    source={{uri: 'https://img2.gratispng.com/20180920/ltc/kisspng-lamborghini-veneno-sports-car-2-17-lamborghini-ave-5ba37832266289.0695041815374397941572.jpg'}}
+                    source={{uri: images[0]}}
                     resizeMode="contain"
                 />
             </ImageContent>

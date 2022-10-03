@@ -10,3 +10,57 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View``;
+
+
+export const Content = styled.ScrollView.attrs({
+    contentContainerStyle: {
+        padding: 24,
+        alignItems: 'center'
+    }
+})``;
+
+export const Details = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 36px;
+`;
+
+export const Info = styled.View`
+`;
+
+export const Brand = styled.Text`
+    font-family: ${({theme}) => theme.fonts.secondary_medium};
+    color: ${({theme}) => theme.colors.gray_text_details};
+    font-size: ${RFValue(10)}px;
+    text-transform: uppercase;
+`;
+
+export const Name = styled.Text`
+    font-family: ${({theme}) => theme.fonts.secondary_medium};
+    color: ${({theme}) => theme.colors.gray_title};
+    font-size: ${RFValue(25)}px;
+`;
+
+export const Rent = styled.View``;
+
+export const Period = styled.Text`
+    font-family: ${({theme}) => theme.fonts.secondary_medium};
+    color: ${({theme}) => theme.colors.gray_text_details};
+    font-size: ${RFValue(10)}px;
+    text-transform: uppercase;
+`;
+
+export const Amount = styled.Text`
+    font-family: ${({theme}) => theme.fonts.secondary_medium};
+    color: ${({theme}) => theme.colors.main};
+    font-size: ${RFValue(25)}px;
+
+`;
+
+export const About = styled.Text`
+    font-family: ${({theme}) => theme.fonts.primary_medium};
+    color: ${({theme}) => theme.colors.gray_text_details};
+    font-size: ${RFValue(15)}px;
+    margin-top: 24px;
+`;
