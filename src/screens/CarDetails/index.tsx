@@ -51,7 +51,7 @@ export function CarDetails(){
                 </Details>
 
                 <Accessories>
-                    <Accessory title="28 x 28" icon={speedSvg} />
+                    <Accessory title="380km/h" icon={speedSvg} />
                     <Accessory title="3.2s" icon={accelerationSvg} />
                     <Accessory title="800 HP" icon={forceSvg} />
                     <Accessory title="Gasolina" icon={gasolineSvg} />
