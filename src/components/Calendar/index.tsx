@@ -40,7 +40,7 @@ export function Calendar(){
                     textDayFontFamily: theme.fonts.primary_regular,
                     textDayHeaderFontFamily: theme.fonts.primary_medium,
                     textDayHeaderFontSize: 10,
-                    textMonthFontSize: 20,
+                    textMonthFontSize: 18,
                     textMonthFontFamily: theme.fonts.secondary_semibold,
                     monthTextColor: theme.colors.gray_title,
                     arrowStyle: {

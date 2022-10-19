@@ -13,7 +13,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
     width: 100%;
-    height: 325px;
+    height: ${RFValue(325)}px;
     background-color: ${({theme}) => theme.colors.shape_black};
     padding: 24px;
     padding-top: ${getStatusBarHeight() + 32}px;
