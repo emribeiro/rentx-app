@@ -39,6 +39,7 @@ import { Accessory } from "../../components/Accessory";
 import { Button } from "../../components/Button";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -46,6 +47,11 @@ import { useTheme } from "styled-components/native";
 export function SchedulingDetails(){
     const images = ['https://img2.gratispng.com/20180920/ltc/kisspng-lamborghini-veneno-sports-car-2-17-lamborghini-ave-5ba37832266289.0695041815374397941572.jpg'];
     const theme = useTheme();
+    const navigation = useNavigation();
+
+    function handleConfirmation(){
+        navigation.navigate('SchedulingComplete' as never);
+    }
     return (
         <Container >
             <Header>
@@ -114,7 +120,7 @@ export function SchedulingDetails(){
                 </RentalTotalContent>
             </Content>
             <Footer>
-                <Button name="Alugar agora" color={theme.colors.green}/>
+                <Button name="Alugar agora" color={theme.colors.green} onPress={handleConfirmation}/>
             </Footer>
         </Container>
     )

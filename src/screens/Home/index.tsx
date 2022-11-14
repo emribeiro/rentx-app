@@ -4,6 +4,7 @@ import Logo from '../../assets/logo.svg';
 import { Container, Header, Title, HeaderContent, CarList } from "./styles";
 import {RFValue} from 'react-native-responsive-fontsize';
 import { CarCard } from "../../components/CarCard";
+import { useNavigation } from "@react-navigation/native";
 
 export function Home(){
     const data = {
@@ -14,6 +15,12 @@ export function Home(){
             amount: 120
         }, 
         thumbnail: 'https://e7.pngegg.com/pngimages/262/890/png-clipart-audi-a5-2013-audi-rs-5-2014-audi-rs-5-sports-car-audi-sedan-car.png'
+    }
+
+    const navigation = useNavigation();
+
+    function handleCarSelection(){
+        navigation.navigate('CarDetails' as never);
     }
 
     return (
@@ -37,7 +44,7 @@ export function Home(){
             <CarList
                 data={[1,2,3,4]}
                 keyExtractor={item => String(item)}
-                renderItem={({item}) => <CarCard data={data} />}
+                renderItem={({item}) => <CarCard data={data} onPress={handleCarSelection}/>}
              />
         </Container>
     )

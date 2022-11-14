@@ -1,4 +1,5 @@
 import React from "react";
+import { RectButtonProps } from "react-native-gesture-handler";
 import { useTheme } from "styled-components";
 import GasolineSvg from '../../assets/gasoline.svg';
 
@@ -25,14 +26,14 @@ interface CardData{
     thumbnail: string;
 }
 
-interface Props{
+interface Props extends RectButtonProps{
     data: CardData
 }
 
-export function CarCard({data}: Props){
+export function CarCard({data, ...rest}: Props){
     const theme = useTheme();
     return(
-        <Container>
+        <Container {...rest}>
             <Details>
                 <CarInfo>
                     <Brand>{data.brand}</Brand>

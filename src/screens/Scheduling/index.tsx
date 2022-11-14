@@ -17,10 +17,16 @@ import ArrowSvg from "../../assets/arrow.svg";
 import { StatusBar } from "react-native";
 import { Button } from "../../components/Button";
 import { Calendar } from "../../components/Calendar";
+import { useNavigation } from "@react-navigation/native";
 
 export function Scheduling(){
 
     const theme = useTheme();
+    const navigation = useNavigation();
+
+    function handleConfirmScheduling(){
+        navigation.navigate('SchedulingDetails' as never);
+    }
 
     return (
         <Container>
@@ -63,7 +69,7 @@ export function Scheduling(){
             </Content>
 
             <Footer>
-                <Button name="Confirmar" />
+                <Button name="Confirmar" onPress={handleConfirmScheduling}/>
             </Footer>
         </Container>
     )

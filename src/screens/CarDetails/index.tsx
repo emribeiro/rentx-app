@@ -25,12 +25,19 @@ import { Container
     } from "./styles";
 import { Accessory } from "../../components/Accessory";
 import { Button } from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 
 
 
 export function CarDetails(){
     const images = ['https://img2.gratispng.com/20180920/ltc/kisspng-lamborghini-veneno-sports-car-2-17-lamborghini-ave-5ba37832266289.0695041815374397941572.jpg'];
+    const navigation = useNavigation();
+
+    function handleRentalConfirmation(){
+        navigation.navigate('Scheduling' as never);
+    }
+    
     return (
         <Container >
             <Header>
@@ -65,7 +72,7 @@ export function CarDetails(){
                 </About>
             </Content>
             <Footer>
-                <Button name="Alugar" />
+                <Button name="Alugar" onPress={handleRentalConfirmation}/>
             </Footer>
         </Container>
     )
