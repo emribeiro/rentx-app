@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import {RFValue} from 'react-native-responsive-fontsize';
 import { FlatList } from "react-native";
+import { CarDto } from "../../dtos/CarDto";
 
 export const Container = styled.View`
     flex: 1;
@@ -27,7 +28,7 @@ export const Title = styled.Text`
     color: ${({theme}) => theme.colors.gray_text};
 `;
 
-export const CarList = styled(FlatList).attrs({
+export const CarList = styled(FlatList as new () => FlatList<CarDto>).attrs({
     contentContainerStyle: {
         padding: 24
     },
