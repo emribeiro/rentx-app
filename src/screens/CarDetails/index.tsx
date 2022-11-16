@@ -78,7 +78,7 @@ export function CarDetails(){
                 </About>
             </Content>
             <Footer>
-                <Button name="Alugar" onPress={handleRentalConfirmation}/>
+                <Button name="Escolher Período do Aluguel" onPress={handleRentalConfirmation}/>
             </Footer>
         </Container>
     )
