@@ -15,8 +15,8 @@ export function Home(){
 
     const navigation = useNavigation();
 
-    function handleCarSelection(){
-        navigation.navigate('CarDetails' as never);
+    function handleCarSelection(car: CarDto){
+        navigation.navigate('CarDetails' as never, car as never);
     }
     useEffect(() => {
         async function getCars(){
@@ -54,7 +54,7 @@ export function Home(){
             {loading ? <Load/> : <CarList
                 data={cars}
                 keyExtractor={item => String(item.id)}
-                renderItem={({item}) => <CarCard data={item} onPress={handleCarSelection}/>}
+                renderItem={({item}) => <CarCard data={item} onPress={() => handleCarSelection(item)}/>}
              />}
         </Container>
     )
