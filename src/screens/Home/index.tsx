@@ -16,7 +16,7 @@ export function Home(){
     const navigation = useNavigation();
 
     function handleCarSelection(car: CarDto){
-        navigation.navigate('CarDetails' as never, car as never);
+        navigation.navigate('CarDetails' as never, { car } as never);
     }
     useEffect(() => {
         async function getCars(){
