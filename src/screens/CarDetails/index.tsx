@@ -40,7 +40,7 @@ export function CarDetails(){
     const {car} = route.params as Params;
     
     function handleRentalConfirmation(){
-        navigation.navigate('Scheduling' as never);
+        navigation.navigate('Scheduling' as never, {car} as never);
     }
 
     function handleGoBack(){

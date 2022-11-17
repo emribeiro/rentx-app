@@ -52,10 +52,13 @@ export function SchedulingDetails(){
     function handleConfirmation(){
         navigation.navigate('SchedulingComplete' as never);
     }
+    function handleGoBack(){
+        navigation.goBack();
+    }
     return (
         <Container >
             <Header>
-                <Backbutton onPress={() => {}}/>
+                <Backbutton onPress={handleGoBack}/>
                 <ImageSlider images={images}/>
             </Header>
             <Content>
