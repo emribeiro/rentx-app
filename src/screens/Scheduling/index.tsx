@@ -16,18 +16,39 @@ import {
 import ArrowSvg from "../../assets/arrow.svg";
 import { StatusBar } from "react-native";
 import { Button } from "../../components/Button";
-import { Calendar } from "../../components/Calendar";
+import { Calendar, DayProps, MarkedDatesProps } from "../../components/Calendar";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { generateInterval } from "../../components/Calendar/dateInterval";
 
 export function Scheduling(){
 
     const theme = useTheme();
     const navigation = useNavigation();
+    const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>({} as DayProps);
+    const [markedDates, setMarkedDates] = useState<MarkedDatesProps>({} as MarkedDatesProps);
 
     function handleConfirmScheduling(){
         navigation.navigate('SchedulingDetails' as never);
     }
 
+    function handleGoBack(){
+        navigation.goBack();
+    }
+
+    function handleChangeDate(date: DayProps){
+        let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
+        let end = date;
+
+        if(start.timestamp > end.timestamp){
+            start = end;
+            end = start;
+        }
+
+        setLastSelectedDate(end);
+        const interval = generateInterval(start, end);
+        setMarkedDates(interval);
+    }
     return (
         <Container>
             <Header>
@@ -37,7 +58,7 @@ export function Scheduling(){
                     backgroundColor="transparent"
                 />
                 <Backbutton 
-                    onPress={() => {}}
+                    onPress={handleGoBack}
                     color={theme.colors.white}
                     />
                 <Title>
@@ -65,7 +86,10 @@ export function Scheduling(){
             </Header>
 
             <Content>
-                <Calendar />
+                <Calendar 
+                    markedDates={markedDates}
+                    onDayPress={handleChangeDate}
+                />
             </Content>
 
             <Footer>
