@@ -4,12 +4,6 @@ import {Feather} from "@expo/vector-icons";
 import { Backbutton } from "../../components/Backbutton";
 import { ImageSlider } from "../../components/ImageSlider";
 
-import accelerationSvg from '../../assets/acceleration.svg';
-import speedSvg from '../../assets/speed.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
 
 import { Container
        , Header 
@@ -39,18 +33,29 @@ import { Accessory } from "../../components/Accessory";
 import { Button } from "../../components/Button";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components/native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { CarDto } from "../../dtos/CarDto";
+import { createSchedule, getAccessoryTypeIcon } from "../../api/api";
+import { RentalPeriod } from "../Scheduling";
+import { Alert } from "react-native";
 
-
-
+interface Params{
+    car: CarDto;
+    rentalPeriod: RentalPeriod
+}
 
 export function SchedulingDetails(){
-    const images = ['https://img2.gratispng.com/20180920/ltc/kisspng-lamborghini-veneno-sports-car-2-17-lamborghini-ave-5ba37832266289.0695041815374397941572.jpg'];
     const theme = useTheme();
     const navigation = useNavigation();
+    const route = useRoute();
+    const {car, rentalPeriod} = route.params as Params;
+    const totalRent = car.rent.price * rentalPeriod.interval.length;
 
     function handleConfirmation(){
-        navigation.navigate('SchedulingComplete' as never);
+        createSchedule(car.id, rentalPeriod.interval)
+            .then(() => navigation.navigate('SchedulingComplete' as never))
+            .catch(() => Alert.alert("Não foi possível realizar o agendamento."));
+        ;
     }
     function handleGoBack(){
         navigation.goBack();
@@ -59,28 +64,27 @@ export function SchedulingDetails(){
         <Container >
             <Header>
                 <Backbutton onPress={handleGoBack}/>
-                <ImageSlider images={images}/>
+                <ImageSlider images={car.photos}/>
             </Header>
             <Content>
                 <Details>
                     <Info>
-                        <Brand>Lamborghini</Brand>
-                        <Name>Huracan</Name>
+                        <Brand>{car.brand}</Brand>
+                        <Name>{car.name}</Name>
                     </Info>
 
                     <Rent>
-                        <Period>Ao dia</Period>
-                        <Amount>R$ 580</Amount>
+                        <Period>{car.rent.period}</Period>
+                        <Amount>R$ {car.rent.price}</Amount>
                     </Rent>
                 </Details>
 
                 <Accessories>
-                    <Accessory title="380km/h" icon={speedSvg} />
-                    <Accessory title="3.2s" icon={accelerationSvg} />
-                    <Accessory title="800 HP" icon={forceSvg} />
-                    <Accessory title="Gasolina" icon={gasolineSvg} />
-                    <Accessory title="Auto" icon={exchangeSvg} />
-                    <Accessory title="2 Pessoas" icon={peopleSvg} />
+                    {
+                        car.accessories.map(accessory => 
+                            <Accessory key={accessory.type} title={accessory.name} icon={getAccessoryTypeIcon(accessory.type)} />        
+                        )
+                    }
                 </Accessories>
 
                 <ScheduleContent>
@@ -94,7 +98,7 @@ export function SchedulingDetails(){
                     
                     <ScheduleInfo>
                         <DateInfo>DE</DateInfo>
-                        <DateValue>18/06/2022</DateValue>
+                        <DateValue>{rentalPeriod.start}</DateValue>
                     </ScheduleInfo>
 
                     <Feather 
@@ -102,8 +106,8 @@ export function SchedulingDetails(){
                     />
 
                     <ScheduleInfo>
-                        <DateInfo>DE</DateInfo>
-                        <DateValue>18/06/2022</DateValue>
+                        <DateInfo>ATÉ</DateInfo>
+                        <DateValue>{rentalPeriod.end}</DateValue>
                     </ScheduleInfo>
                         
                 </ScheduleContent>
@@ -114,11 +118,11 @@ export function SchedulingDetails(){
                             TOTAL
                         </RentalTotalLabel>
                         <RentalTotalDescription>
-                            R$ 580 x 3 diárias
+                            R$ {car.rent.price} x {rentalPeriod.interval.length} diárias
                         </RentalTotalDescription>
                     </RentalTotalInfo>
                     <RentalTotalAmount>
-                        R$ 2.900
+                        R$ {totalRent}
                     </RentalTotalAmount>
                 </RentalTotalContent>
             </Content>

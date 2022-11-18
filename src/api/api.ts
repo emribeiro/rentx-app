@@ -36,6 +36,13 @@ export async function listCars(){
     return response.data;
 }
 
+export function createSchedule(carId: string, dateInterval: string[]){
+    return api.put(`/schedules_bycars/${carId}`, {
+        id: carId,
+        unavailable_dates: dateInterval
+    });
+}
+
 export function getAccessoryTypeIcon(accessoryType: string){
     const accessory = accessoryIcons.find(item => item.type === accessoryType);
 

@@ -23,9 +23,10 @@ import { useState } from "react";
 import { generateInterval } from "../../components/Calendar/dateInterval";
 import { CarDto } from "../../dtos/CarDto";
 
-interface RentalPeriod{
+export interface RentalPeriod{
     start: string;
     end: string;
+    interval: string[];
 }
 
 interface Params{
@@ -45,10 +46,10 @@ export function Scheduling(){
     const {car} = route.params as Params;
 
     function handleConfirmScheduling(){
-        if(!!rentalPeriod.start || !!rentalPeriod.end){
-            Alert.alert("Informe o periodo para aluguel.");
-        }else{
+        if(!!rentalPeriod.start && !!rentalPeriod.end){
             navigation.navigate('SchedulingDetails' as never, {car, rentalPeriod} as never);
+        }else{
+            Alert.alert("Informe o periodo para aluguel.");
         }
     }
 
@@ -71,7 +72,8 @@ export function Scheduling(){
 
         setRentalPeriod({
             start: format(new Date(start.timestamp), 'dd/MM/yyyy'),
-            end: format(new Date(end.timestamp), 'dd/MM/yyyy')
+            end: format(new Date(end.timestamp), 'dd/MM/yyyy'),
+            interval: Object.keys(interval)
         });
 
     }

@@ -2,13 +2,6 @@ import React from "react";
 import { Backbutton } from "../../components/Backbutton";
 import { ImageSlider } from "../../components/ImageSlider";
 
-import accelerationSvg from '../../assets/acceleration.svg';
-import speedSvg from '../../assets/speed.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
-
 import { Container
        , Header 
        , Content
