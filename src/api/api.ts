@@ -61,9 +61,9 @@ export async function createSchedule(userId, car: CarDto, dateInterval: string[]
 }
 
 export async function listRentalByUser(userId: number){
-    const response = await api.get(`/schedules_byuser/${userId}`);
+    const response = await api.get(`/schedules_byuser`);
 
-    return response.data;
+    return response.data.filter((item) => item.user_id === userId);
 }
 
 export function getAccessoryTypeIcon(accessoryType: string){
