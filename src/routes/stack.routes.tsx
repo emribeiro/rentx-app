@@ -6,6 +6,7 @@ import { SchedulingDetails } from "../screens/SchedulingDetails";
 import { SchedulingComplete } from "../screens/SchedulingComplete";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { MyRentals } from "../screens/MyRentals";
 
 export function StackRoutes(){
 
@@ -27,6 +28,9 @@ export function StackRoutes(){
             <Screen
                 name="SchedulingComplete"
                 component={SchedulingComplete}/>
+            <Screen
+                name="MyRentals"
+                component={MyRentals}/>
         </Navigator>
     )
 }
