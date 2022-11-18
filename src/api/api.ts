@@ -9,6 +9,7 @@ import hybridSvg from '../assets/hybrid.svg';
 import exchangeSvg from '../assets/exchange.svg';
 import peopleSvg from '../assets/people.svg';
 import { SvgProps } from "react-native-svg";
+import { CarDto } from "../dtos/CarDto";
 
 interface AccessoryIcon{
     type: string;
@@ -36,11 +37,33 @@ export async function listCars(){
     return response.data;
 }
 
-export function createSchedule(carId: string, dateInterval: string[]){
-    return api.put(`/schedules_bycars/${carId}`, {
-        id: carId,
-        unavailable_dates: dateInterval
+export async function createSchedule(userId, car: CarDto, dateInterval: string[]){
+
+    const response = await api.get(`/schedules_bycars/${car.id}`);
+
+    const dates = [
+        ...response.data.unavailable_dates,
+        dateInterval
+    ]
+
+    await api.post("/schedules_byuser", {
+        id: 99,
+        user_id: userId,
+        car,
+        startDate: dateInterval[0],
+        endDate: dateInterval[dateInterval.length - 1]
     });
+
+    return api.put(`/schedules_bycars/${car.id}`, {
+        id: car.id,
+        unavailable_dates: dates
+    });
+}
+
+export async function listRentalByUser(userId: number){
+    const response = await api.get(`/schedules_byuser/${userId}`);
+
+    return response.data;
 }
 
 export function getAccessoryTypeIcon(accessoryType: string){

@@ -52,7 +52,7 @@ export function SchedulingDetails(){
     const totalRent = car.rent.price * rentalPeriod.interval.length;
 
     function handleConfirmation(){
-        createSchedule(car.id, rentalPeriod.interval)
+        createSchedule(1,car, rentalPeriod.interval)
             .then(() => navigation.navigate('SchedulingComplete' as never))
             .catch(() => Alert.alert("Não foi possível realizar o agendamento."));
         ;
