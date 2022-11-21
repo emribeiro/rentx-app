@@ -40,6 +40,7 @@ export async function listCars(){
 export async function createSchedule(userId, car: CarDto, dateInterval: string[]){
 
     const response = await api.get(`/schedules_bycars/${car.id}`);
+    const schedules = await api.get(`/schedules_byuser/${userId}`);
 
     const dates = [
         ...response.data.unavailable_dates,
@@ -47,7 +48,7 @@ export async function createSchedule(userId, car: CarDto, dateInterval: string[]
     ]
 
     await api.post("/schedules_byuser", {
-        id: 99,
+        id: schedules.data.length + 1,
         user_id: userId,
         car,
         startDate: dateInterval[0],
