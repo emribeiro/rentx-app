@@ -349,7 +349,7 @@
           "period": "Ao dia",
           "price": 120
         },
-        "fuel_type": "electric",
+        "fuel_type": "electric_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
         "accessories": [
           {
@@ -496,7 +496,7 @@
           "period": "Ao dia",
           "price": 120
         },
-        "fuel_type": "electric",
+        "fuel_type": "electric_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
         "accessories": [
           {
@@ -1412,7 +1412,7 @@
           "period": "Ao dia",
           "price": 120
         },
-        "fuel_type": "electric",
+        "fuel_type": "electric_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
         "accessories": [
           {
