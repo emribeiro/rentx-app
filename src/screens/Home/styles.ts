@@ -53,3 +53,4 @@ export const MyRentalsButton = styled(RectButton)`
     justify-content: center;
     align-items: center;
 `;
+
