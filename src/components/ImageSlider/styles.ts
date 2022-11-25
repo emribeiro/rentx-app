@@ -30,5 +30,5 @@ export const ImageContent = styled.View`
 
 export const CarImage = styled.Image`
     width: ${Dimensions.get('window').width}px;
-    height: ${RFValue(132)}px;
+    height: 132px;
 `;
