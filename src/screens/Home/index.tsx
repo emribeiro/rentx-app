@@ -7,9 +7,9 @@ import { CarCard } from "../../components/CarCard";
 import { useNavigation } from "@react-navigation/native";
 import { listCars } from "../../api/api";
 import { CarDto } from "../../dtos/CarDto";
-import { Load } from "../../components/Load";
 import {Ionicons} from "@expo/vector-icons";
 import { useTheme } from "styled-components";
+import { LoadAnimation } from "../../components/LoadAnimation";
 
 export function Home(){
     const [cars, setCars] = useState<CarDto[]>([]);
@@ -66,7 +66,7 @@ export function Home(){
                 </HeaderContent>
             </Header>
 
-            {loading ? <Load/> : <CarList
+            {loading ? <LoadAnimation/> : <CarList
                 data={cars}
                 keyExtractor={item => String(item.id)}
                 renderItem={({item}) => <CarCard data={item} onPress={() => handleCarSelection(item)}/>}
