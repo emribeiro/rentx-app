@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { StatusBar } from "react-native";
+import { BackHandler, StatusBar } from "react-native";
 import Logo from '../../assets/logo.svg';
 import { Container, Header, Title, HeaderContent, CarList, MyRentalsButton } from "./styles";
 import {RFValue} from 'react-native-responsive-fontsize';
@@ -38,7 +38,13 @@ export function Home(){
         }
 
         getCars();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            return true;
+        })
+    })
 
     return (
         <Container >
@@ -53,8 +59,10 @@ export function Home(){
                         width={RFValue(108)}
                         height={RFValue(12)}
                     />
-
-                    <Title>{cars.length} Carros para Aluguel</Title>
+                    {
+                        !loading &&
+                        <Title>{cars.length} Carros para Aluguel</Title>
+                    }
                 </HeaderContent>
             </Header>
 
