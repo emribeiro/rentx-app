@@ -8,12 +8,16 @@ import { SchedulingComplete } from "../screens/SchedulingComplete";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MyRentals } from "../screens/MyRentals";
 import { Splash } from "../screens/Splash";
+import { SignIn } from "../screens/SignIn"
 
 export function StackRoutes(){
 
     const {Screen, Navigator} = createNativeStackNavigator();
     return (
         <Navigator screenOptions={{headerShown: false}}>
+            <Screen
+                name="SignIn"
+                component={SignIn}/>
             <Screen
                 name="Splash"
                 component={Splash}/>
