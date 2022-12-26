@@ -7,8 +7,10 @@ import {
     Header,
     Title,
     SubTitle,
+    Form,
     Footer
 } from './styles'
+import { Input } from '../../components/Input';
 
 export function SignIn(){
     const theme = useTheme();
@@ -29,6 +31,18 @@ export function SignIn(){
                     uma experiência incrível.
                 </SubTitle>
             </Header>
+
+            <Form>
+                <Input
+                    iconName='mail'
+                    placeholder='E-mail'
+                    keyboardType='email-address'
+                />
+                <Input
+                    iconName='lock'
+                    placeholder='Senha'
+                />
+            </Form>
             <Footer>
                 <Button 
                     name='Login'
