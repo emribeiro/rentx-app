@@ -38,7 +38,7 @@ export function SignIn(){
                     name='Criar conta gratuita'
                     enabled={false}
                     color={theme.colors.white}
-                    ligth={true}
+                    light={true}
                 />
             </Footer>
         </Container>
