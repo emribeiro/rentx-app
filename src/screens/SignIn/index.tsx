@@ -11,6 +11,7 @@ import {
     Footer
 } from './styles'
 import { Input } from '../../components/Input';
+import { PasswordInput } from '../../components/PasswordInput';
 
 export function SignIn(){
     const theme = useTheme();
@@ -38,7 +39,7 @@ export function SignIn(){
                     placeholder='E-mail'
                     keyboardType='email-address'
                 />
-                <Input
+                <PasswordInput
                     iconName='lock'
                     placeholder='Senha'
                 />
@@ -47,6 +48,7 @@ export function SignIn(){
                 <Button 
                     name='Login'
                     enabled={false}
+                    style={{marginBottom: 8}}
                 />
                 <Button 
                     name='Criar conta gratuita'
