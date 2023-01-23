@@ -3,6 +3,7 @@ import {RectButton} from "react-native-gesture-handler";
 
 interface ButtonProps{
     color?: string;
+    enabled?: boolean;
     
 }
 
@@ -14,7 +15,7 @@ export const Container = styled(RectButton)<ButtonProps>`
     width: 100%;
     padding: 12px;
 
-    background-color: ${({theme, color}) => color ? color : theme.colors.main};
+    background-color: ${({theme, color, enabled}) => color ? color : enabled ? theme.colors.main : theme.colors.hover_red};
 
     align-items: center;
     justify-content: center;
