@@ -43,8 +43,8 @@ export function PasswordInput(
 
     const theme = useTheme();
     return (
-        <Container isFocused={isFocused}>
-            <IconContainer>
+        <Container>
+            <IconContainer isFocused={isFocused}>
                 <Feather 
                     name={iconName}
                     size={24}
@@ -56,9 +56,10 @@ export function PasswordInput(
                 secureTextEntry={isVisible}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
+                isFocused={isFocused}
             />
             <BorderlessButton onPress={handleVisibility}>
-                <IconContainer>
+                <IconContainer isFocused={isFocused}>
                     <Feather 
                         name={isVisible ? 'eye' : 'eye-off'}
                         size={24}
