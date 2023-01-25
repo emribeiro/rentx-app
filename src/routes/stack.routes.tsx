@@ -9,15 +9,19 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MyRentals } from "../screens/MyRentals";
 import { Splash } from "../screens/Splash";
 import { SignIn } from "../screens/SignIn"
+import {SignUpFirstStep} from "../screens/SignUp/FirstStep";
 
 export function StackRoutes(){
 
     const {Screen, Navigator} = createNativeStackNavigator();
     return (
-        <Navigator screenOptions={{headerShown: false}}>
+        <Navigator screenOptions={{headerShown: false}} initialRouteName="SignUpFirstStep">
             <Screen
                 name="SignIn"
                 component={SignIn}/>
+            <Screen
+                name="SignUpFirstStep"
+                component={SignUpFirstStep}/>
             <Screen
                 name="Splash"
                 component={Splash}/>
