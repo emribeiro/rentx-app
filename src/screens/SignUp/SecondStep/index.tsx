@@ -1,11 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Keyboard, KeyboardAvoidingView } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Backbutton } from "../../../components/Backbutton";
 import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
+import { PasswordInput } from "../../../components/PasswordInput";
+import { useTheme } from "styled-components";
+
 import {
     Container
   , Header
@@ -16,18 +17,16 @@ import {
   , Form
   , FormTitle
 } from './styles';
+import { useNavigation } from "@react-navigation/native";
 
-export function SignUpFirstStep(){
+export function SignUpSecondStep(){
+
+    const theme = useTheme();
     const navigation = useNavigation();
 
     function handleGoBack(){
         navigation.goBack();
     }
-
-    function handleNextStep(){
-        navigation.navigate("SignUpSecondStep" as never);;
-    }
-
     return (
         <KeyboardAvoidingView behavior='position' enabled>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -37,8 +36,8 @@ export function SignUpFirstStep(){
                             onPress={handleGoBack}
                         />
                         <BulletContainer>
-                            <Bullet active/>
                             <Bullet />
+                            <Bullet active/>
                         </BulletContainer>
                     </Header>
                     <Content>
@@ -50,28 +49,20 @@ export function SignUpFirstStep(){
                             forma rápida e fácil
                         </Subtitle>
                         <Form>
-                            <FormTitle>1. Dados</FormTitle>
-                            <Input 
-                                iconName="user"
-                                placeholder="Nome"
-                                autoCorrect={false}
+                            <FormTitle>2. Senha</FormTitle>
+                            <PasswordInput
+                                iconName='lock'
+                                placeholder='Senha'
                             />
-                            <Input
-                                iconName='mail'
-                                placeholder='E-mail'
-                                keyboardType='email-address'
-                                autoCorrect={false}
-                            />
-                            <Input 
-                                iconName="credit-card"
-                                placeholder="CNH"
-                                autoCorrect={false}
+                            <PasswordInput 
+                                iconName="lock"
+                                placeholder="Repetir Senha"
                             />
                             <Button 
-                                    name='Próximo'
+                                    name='Cadastrar'
                                     enabled={true}
                                     style={{marginTop: 16}}
-                                    onPress={handleNextStep}
+                                    color={theme.colors.green}
                                 />
                         </Form>
                     </Content>

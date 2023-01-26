@@ -10,18 +10,22 @@ import { MyRentals } from "../screens/MyRentals";
 import { Splash } from "../screens/Splash";
 import { SignIn } from "../screens/SignIn"
 import {SignUpFirstStep} from "../screens/SignUp/FirstStep";
+import { SignUpSecondStep } from "../screens/SignUp/SecondStep";
 
 export function StackRoutes(){
 
     const {Screen, Navigator} = createNativeStackNavigator();
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName="SignUpFirstStep">
+        <Navigator screenOptions={{headerShown: false}} initialRouteName="SignIn">
             <Screen
                 name="SignIn"
                 component={SignIn}/>
             <Screen
                 name="SignUpFirstStep"
                 component={SignUpFirstStep}/>
+            <Screen
+                name="SignUpSecondStep"
+                component={SignUpSecondStep}/>
             <Screen
                 name="Splash"
                 component={Splash}/>

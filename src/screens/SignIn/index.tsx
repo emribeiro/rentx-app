@@ -15,9 +15,11 @@ import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
 export function SignIn(){
     const theme = useTheme();
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -36,6 +38,10 @@ export function SignIn(){
                 Alert.alert("Operação", "Erro na realização do Login");
             }
         }
+    }
+
+    function handleSignUp(){
+        navigation.navigate("SignUpFirstStep" as never);
     }
 
     return (
@@ -82,9 +88,10 @@ export function SignIn(){
                         />
                         <Button 
                             name='Criar conta gratuita'
-                            enabled={false}
+                            enabled={true}
                             color={theme.colors.white}
                             light={true}
+                            onPress={handleSignUp}
                         />
                     </Footer>
                 </Container>
