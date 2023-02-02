@@ -53,7 +53,15 @@ export function SchedulingDetails(){
 
     function handleConfirmation(){
         createSchedule(1,car, rentalPeriod.interval)
-            .then(() => navigation.navigate('SchedulingComplete' as never))
+            .then(
+                    () => 
+                        navigation
+                            .navigate( 'Confirmation' as never,
+                                    { title: "Carro alugado!"
+                                    , message: `Agora você só precisa ir \naté a concessionária da RENTX \npegar o seu automóvel.`
+                                    , nextRoute: 'Home'
+                                    } as never
+                            ))
             .catch(() => Alert.alert("Não foi possível realizar o agendamento."));
         ;
     }

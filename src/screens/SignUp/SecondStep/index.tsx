@@ -43,7 +43,12 @@ export function SignUpSecondStep(){
         try {
             await schema.validate(data);
 
-            //TODO - Cadastrar o cliente e ir para a página de login.
+            navigation.navigate( 'Confirmation' as never,
+                    { title: "Conta Criada!"
+                    , message: ''
+                    , nextRoute: 'SignIn'
+                    } as never
+            )
         } catch (error) {
             if(error instanceof Yup.ValidationError){
                 Alert.alert("Validação", error.message);
