@@ -1,11 +1,12 @@
-import React from "react";
-import { Keyboard, KeyboardAvoidingView } from "react-native";
+import React, { useState } from "react";
+import { Alert, Keyboard, KeyboardAvoidingView } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Backbutton } from "../../../components/Backbutton";
 import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
 import { PasswordInput } from "../../../components/PasswordInput";
 import { useTheme } from "styled-components";
+import * as Yup from "yup";
 
 import {
     Container
@@ -23,9 +24,33 @@ export function SignUpSecondStep(){
 
     const theme = useTheme();
     const navigation = useNavigation();
+    const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
     function handleGoBack(){
         navigation.goBack();
+    }
+
+    async function handleSignUp(){
+        const schema = Yup.object().shape({
+            password: Yup.string().required("Senha é obrigatória"),
+            passwordConfirmation: Yup.string()
+                .oneOf([Yup.ref('password'), null], "As senhas devem ser iguais")
+        })
+
+        const data = {password, passwordConfirmation};
+
+        try {
+            await schema.validate(data);
+
+            //TODO - Cadastrar o cliente e ir para a página de login.
+        } catch (error) {
+            if(error instanceof Yup.ValidationError){
+                Alert.alert("Validação", error.message);
+            }else{
+                Alert.alert("Operação", error);
+            }
+        }
     }
     return (
         <KeyboardAvoidingView behavior='position' enabled>
@@ -53,16 +78,21 @@ export function SignUpSecondStep(){
                             <PasswordInput
                                 iconName='lock'
                                 placeholder='Senha'
+                                onChangeText={setPassword}
+                                value={password}
                             />
                             <PasswordInput 
                                 iconName="lock"
                                 placeholder="Repetir Senha"
+                                onChangeText={setPasswordConfirmation}
+                                value={passwordConfirmation}
                             />
                             <Button 
                                     name='Cadastrar'
                                     enabled={true}
                                     style={{marginTop: 16}}
                                     color={theme.colors.green}
+                                    onPress={handleSignUp}
                                 />
                         </Form>
                     </Content>
